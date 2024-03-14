@@ -1,0 +1,19 @@
+/*body {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    background-color: #eee;*/
+/*}*/
+html,
+body,
+#app{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #eee;
+}
+
+
+* {
+    box-sizing: border-box;
+}
