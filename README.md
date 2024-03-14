@@ -1,5 +1,6 @@
 # LibraryManagementSystem
 基于SpringBoot的前后端分离图书管理系统
+
 Java、Maven、Springboot、SpringSecurity、Redis、Swagger2、Mybatis、MybatisPlus、Mysql、Vue、ElementUI、Nginx、Spring、HTML、TOMCAT、Echarts
 
 # 系统图片
