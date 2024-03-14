@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.feliks.mapper.BorrowMapper">
+
+    <select id="getCountByTimeRange" resultType="com.feliks.po.BorrowReturnCountPO">
+        select count(id) as count, DATE_FORMAT(create_time, '%Y-%m-%d') as date from
+        <if test="type == 1">
+            borrow
+        </if>
+        <if test="type == 2">
+            returnbook
+        </if>
+        where
+        <choose>
+            <when test="timeRange == 'week'">
+                create_time >= DATE_SUB(NOW(), INTERVAL 1 WEEK )
+            </when>
+            <when test="timeRange == 'month'">
+                create_time >= DATE_SUB(NOW(), INTERVAL 1 MONTH )
+            </when>
+            <when test="timeRange == 'month2'">
+                create_time >= DATE_SUB(NOW(), INTERVAL 2 MONTH )
+            </when>
+            <when test="timeRange == 'month3'">
+                create_time >= DATE_SUB(NOW(), INTERVAL 3 MONTH )
+            </when>
+            <otherwise>
+                create_time > now()
+            </otherwise>
+        </choose>
+        group by date
+    </select>
+</mapper>

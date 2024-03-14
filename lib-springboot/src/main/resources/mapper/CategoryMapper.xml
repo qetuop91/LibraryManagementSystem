@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.feliks.mapper.CategoryMapper">
+    <resultMap id="categoryMap" type="com.feliks.entity.Category">
+        <id column="id" property="id"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="remark" property="remark"/>
+        <result column="pid" property="pid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <collection property="children" ofType="com.feliks.entity.Category" column="id" select="selectByPid"/>
+    </resultMap>
+
+    <select id="selectByPid" resultType="com.feliks.entity.Category">
+        SELECT * FROM category WHERE pid = #{id}
+        ORDER BY id DESC
+    </select>
+
+    <select id="listByCondition" resultMap="categoryMap">
+        SELECT c1.* FROM category c1
+        LEFT JOIN category c2
+        ON c1.id = c2.pid
+        <where>
+            isnull(c1.pid)
+            <if test="categoryName != null and categoryName != ''">
+                AND (c1.category_name LIKE concat('%', #{categoryName}, '%') OR c2.category_name LIKE concat('%', #{categoryName}, '%'))
+            </if>
+        </where>
+        GROUP BY c1.id
+        ORDER BY c1.id DESC
+    </select>
+</mapper>
