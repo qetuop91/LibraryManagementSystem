@@ -3,6 +3,10 @@
 
 Java、Maven、Springboot、SpringSecurity、Redis、Swagger2、Mybatis、MybatisPlus、Mysql、Vue、ElementUI、Nginx、Spring、HTML、TOMCAT、Echarts
 
+# 接口文档（Swagger2）
+![image-20240314204045865](https://felikstypora.oss-cn-guangzhou.aliyuncs.com/202403142041885.png) 
+
+
 # 系统图片
 
 ![image-20240314162004579](https://felikstypora.oss-cn-guangzhou.aliyuncs.com/202403141620954.png) 
